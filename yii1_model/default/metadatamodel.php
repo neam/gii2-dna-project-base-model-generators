@@ -10,9 +10,9 @@ Yii::import('<?php echo 'Metadata' . $modelClass; ?>.*');
 class <?php echo 'Metadata' . $modelClass; ?> extends <?php echo 'Base' . $modelClass."\n"; ?>
 {
 <?php
-if (!empty($generator->metadataClassTraits)) {
+if (!empty($metadataClassTraits)) {
     echo "\n";
-    foreach(explode(",", $generator->metadataClassTraits) as $traitName) {
+    foreach(explode(",", $metadataClassTraits) as $traitName) {
         echo '    use '.$traitName.';' . "\n";
     }
     echo "\n";

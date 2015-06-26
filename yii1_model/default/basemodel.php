@@ -58,7 +58,7 @@ $modelClass = $className;
     ?>
 <?php endforeach; ?>
  */
-abstract class <?php echo 'Base' . $modelClass; ?> extends <?php echo $generator->baseClass."\n"; ?>
+abstract class <?php echo 'Base' . $modelClass; ?> extends <?php echo str_replace('yii\\db\\', '', $generator->baseClass)."\n"; ?>
 {
 <?php
 if (!empty($generator->baseClassTraits)) {
