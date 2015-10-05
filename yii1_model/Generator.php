@@ -308,12 +308,13 @@ class Generator extends \schmunk42\giiant\model\Generator
 
 	/**
 	 * Generate a name for use as a relation name (inside relations() function in a model).
+     * @param array $relations
 	 * @param string the name of the table to hold the relation
 	 * @param string the foreign key name
 	 * @param boolean whether the relation would contain multiple objects
 	 * @return string the relation name
 	 */
-	protected function generateRelationName($tableName, $fkName, $multiple)
+	protected function generateRelationName($relations, $tableName, $fkName, $multiple)
 	{
 		if(strcasecmp(substr($fkName,-2),'id')===0 && strcasecmp($fkName,'id'))
 			$relationName=rtrim(substr($fkName, 0, -2),'_');
