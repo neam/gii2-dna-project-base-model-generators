@@ -200,10 +200,10 @@ class Generator extends \schmunk42\giiant\model\Generator
 
 				$unprefixedTableName=$this->removePrefix($tableName);
 
-				$relationName=$this->generateRelationName($table0, $table1, true);
+				$relationName=$this->generateRelationName($relations, $table0, $table1, true);
 				$relations[$className0][$relationName]="array(self::MANY_MANY, '$className1', '$unprefixedTableName($pks[0], $pks[1])')";
 
-				$relationName=$this->generateRelationName($table1, $table0, true);
+				$relationName=$this->generateRelationName($relations, $table1, $table0, true);
 
 				$i=1;
 				$rawName=$relationName;
@@ -226,12 +226,12 @@ class Generator extends \schmunk42\giiant\model\Generator
 					$refClassName=$this->generateClassName($refTable);
 
 					// Add relation for this table
-					$relationName=$this->generateRelationName($tableName, $fkName, false);
+					$relationName=$this->generateRelationName($relations, $tableName, $fkName, false);
 					$relations[$className][$relationName]="array(self::BELONGS_TO, '$refClassName', '$fkName')";
 
 					// Add relation for the referenced table
 					$relationType=$table->primaryKey === $fkName ? 'HAS_ONE' : 'HAS_MANY';
-					$relationName=$this->generateRelationName($refTable, $this->removePrefix($tableName,false), $relationType==='HAS_MANY');
+					$relationName=$this->generateRelationName($relations, $refTable, $this->removePrefix($tableName,false), $relationType==='HAS_MANY');
 					$i=1;
 					$rawName=$relationName;
 					while(isset($relations[$refClassName][$relationName]))
