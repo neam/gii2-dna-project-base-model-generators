@@ -35,11 +35,6 @@ class <?php echo $modelClass; ?> extends <?php echo ($generator->useMetadataClas
         return parent::init();
     }
 
-    public function getItemLabel()
-    {
-        return parent::getItemLabel();
-    }
-
     public function behaviors()
     {
         <?php
@@ -67,9 +62,11 @@ class <?php echo $modelClass; ?> extends <?php echo ($generator->useMetadataClas
         if (is_null($criteria)) {
             $criteria = new CDbCriteria;
         }
-        return new CActiveDataProvider(get_class($this), array(
-            'criteria' => $this->searchCriteria($criteria),
-        ));
+        return new CActiveDataProvider(
+            get_class($this), array(
+                'criteria' => $this->searchCriteria($criteria),
+            )
+        );
     }
 
 }
