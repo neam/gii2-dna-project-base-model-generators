@@ -116,12 +116,21 @@ if(!empty($enum)){
      */
     public function getItemLabel()
     {
+        return $item->getPropelModel()->getItemLabel();
+    }
+
+    /**
+     * Returns the corresponding propel model class
+     * @return string
+     */
+    public function getPropelModel()
+    {
         if (empty($this->getPrimaryKey())) {
             $item = new \propel\models\<?php echo $modelClass; ?>();
         } else {
             $item = \propel\models\<?php echo $modelClass; ?>Query::create()->findPk($this->getPrimaryKey());
         }
-        return $item->getItemLabel();
+        return $item;
     }
 
     public function relations()
