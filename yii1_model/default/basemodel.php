@@ -116,7 +116,7 @@ if(!empty($enum)){
      */
     public function getItemLabel()
     {
-        return $item->getPropelModel()->getItemLabel();
+        return $this->getPropelModel()->getItemLabel();
     }
 
     /**
